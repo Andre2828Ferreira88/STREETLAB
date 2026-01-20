@@ -6,3 +6,4 @@ itsdangerous
 click
 psycopg2-binary
 flask-sqlalchemy
+requests
