@@ -1,0 +1,35 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Usuários • Admin{% endblock %}
+
+{% block content %}
+<section class="admin-section">
+  <h1>Usuários cadastrados</h1>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Perfil</th>
+        <th>Cadastrado em</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    {% for user in users %}
+    <tr>
+        <td>#{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+        <span class="badge {{ 'badge-admin' if user.role == 'admin' else 'badge-user' }}">
+            {{ user.role }}
+        </span>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</section>
+{% endblock %}

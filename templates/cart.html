@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Carrinho • STREETLAB{% endblock %}
+
+{% block content %}
+<section class="cart">
+  <div class="cart__wrap">
+
+    <h1 class="cart__title">Carrinho</h1>
+
+    {% if cart and cart|length > 0 %}
+
+    <!-- LISTA DE ITENS -->
+    <div class="cart__items">
+
+      {% for item in cart %}
+      <div class="cart__item">
+
+        <!-- IMAGEM -->
+        <div class="cart__img"
+          style="background-image: url('{{ url_for('static', filename='uploads/' ~ item.image) }}');">
+        </div>
+
+        <!-- INFO -->
+        <div class="cart__info">
+          <div class="cart__name">{{ item.name }}</div>
+          <div class="cart__meta">
+            Tamanho: <strong>{{ item.size }}</strong>
+          </div>
+
+          <div class="cart__price">
+            R$ {{ "%.2f"|format(item.price) }}
+          </div>
+        </div>
+
+        <!-- QUANTIDADE -->
+        <div class="cart__qty">
+          <a href="{{ url_for('cart_decrease', index=loop.index0) }}" class="qty-btn">−</a>
+          <span>{{ item.quantity }}</span>
+          <a href="{{ url_for('cart_increase', index=loop.index0) }}" class="qty-btn">+</a>
+        </div>
+
+        <!-- SUBTOTAL -->
+        <div class="cart__subtotal">
+          R$ {{ "%.2f"|format(item.price * item.quantity) }}
+        </div>
+
+        <!-- REMOVER -->
+        <a
+          href="{{ url_for('cart_remove', index=loop.index0) }}"
+          class="cart__remove">
+          Remover
+        </a>
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <!-- RESUMO -->
+    <div class="cart__summary">
+      <div class="summary__row">
+        <span>Subtotal</span>
+        <strong>R$ {{ "%.2f"|format(total) }}</strong>
+      </div>
+
+      <div class="summary__row muted">
+        Frete calculado no checkout
+      </div>
+
+    <a href="/checkout" class="btn btn--primary btn--full">
+    Finalizar compra
+    </a>
+
+    </div>
+
+    {% else %}
+
+    <!-- CARRINHO VAZIO -->
+    <div class="cart__empty">
+      <p>Seu carrinho está vazio.</p>
+      <a href="/shop" class="btn btn--ghost">
+        Ver produtos
+      </a>
+    </div>
+
+    {% endif %}
+
+  </div>
+</section>
+{% endblock %}

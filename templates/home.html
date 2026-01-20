@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}STREETLAB • Home{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="hero__canvas">
+
+    <!-- Camadas visuais -->
+    <div class="layer layer--img layer--imgA"></div>
+    <div class="layer layer--img layer--imgB"></div>
+
+    <!-- Texto -->
+    <div class="layer layer--type">
+      <div class="typeStack">
+        <div class="typeStack__ghost">STREETLAB</div>
+        <div class="typeStack__main">STREETLAB</div>
+        <div class="typeStack__tag">
+          DROP 01 • 2025 ENERGY • OVERSIZED CUTS
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero__ctaRow">
+        <a class="btn btn--primary"
+           href="{% if logged %}/shop{% else %}{{ url_for('login', next='/') }}{% endif %}">
+          Entrar no Drop
+        </a>
+
+        <a class="btn btn--ghost"
+           href="/lookbook" class="nav__link">
+          Ver Lookbook
+        </a>
+      </div>
+    </div>
+
+    <!-- Stickers -->
+    <div class="sticker sticker--left">
+      <div class="sticker__title">LIMITED</div>
+      <div class="sticker__sub">48h only</div>
+    </div>
+
+    <div class="sticker sticker--right">
+      <div class="sticker__title">NEW</div>
+      <div class="sticker__sub">tees • hoodies</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="grid">
+  <div class="grid__head">
+    <h2 class="h2">Featured</h2>
+    <p class="muted">
+      Peças com visual editorial, cortes limpos e identidade de rua.
+    </p>
+  </div>
+
+  <div class="cards">
+    {% for product in featured_products %}
+      <article class="card">
+        <div class="card__img"
+             style="background-image: url('{{ url_for('static', filename='uploads/' ~ product.image) }}');">
+        </div>
+
+        <div class="card__meta">
+          <div class="card__name">{{ product.name }}</div>
+          <div class="card__price">R$ {{ product.price }}</div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,331 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* BASE */
+body {
+  background: #f6f6f6;
+  color: #0f0f0f;
+}
+
+/* =====================
+   TOPBAR
+===================== */
+
+.admin-top {
+  height: 64px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.admin-brand {
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.admin-user {
+  font-size: 14px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.admin-exit {
+  text-decoration: none;
+  color: #999;
+}
+
+/* =====================
+   LAYOUT
+===================== */
+
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: calc(100vh - 64px);
+}
+
+/* =====================
+   SIDEBAR
+===================== */
+
+.admin-menu {
+  background: #ffffff;
+  border-right: 1px solid #e5e5e5;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-link {
+  padding: 14px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.admin-link:hover {
+  background: #f0f0f0;
+}
+
+.admin-link--danger {
+  color: #c00;
+}
+
+/* =====================
+   CONTENT
+===================== */
+
+.admin-content {
+  padding: 48px;
+}
+
+/* =====================
+   TITLES
+===================== */
+
+.admin-title {
+  font-size: 36px;
+  margin-bottom: 32px;
+  font-weight: 800;
+}
+
+/* =====================
+   DASHBOARD
+===================== */
+
+.admin-cards {
+  display: flex;
+  gap: 24px;
+}
+
+.admin-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 20px;
+  width: 240px;
+}
+
+.admin-card span {
+  font-size: 13px;
+  color: #777;
+}
+
+.admin-card strong {
+  font-size: 36px;
+  display: block;
+  margin-top: 8px;
+}
+
+/* =====================
+   TABLE
+===================== */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.admin-table {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background: #fafafa;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 16px;
+  text-align: left;
+}
+
+.admin-table td {
+  padding: 18px 16px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+}
+
+.admin-actions a {
+  margin-right: 12px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.admin-actions .danger {
+  color: #c00;
+}
+
+/* =====================
+   FORM
+===================== */
+
+.admin-form {
+  max-width: 520px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.admin-form input,
+.admin-form textarea {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.admin-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+.btn-admin {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* =====================
+   IMAGE PREVIEW
+===================== */
+
+.image-upload__preview {
+  height: 220px;
+  border-radius: 16px;
+  background: #f0f0f0;
+  border: 1px dashed #ccc;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* =====================
+   CHECKBOX
+===================== */
+
+.checkbox {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* =========================
+   ADMIN - FORM
+========================= */
+
+.admin-form {
+  max-width: 520px;
+  background: #fff;
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.admin-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="number"],
+.admin-form textarea,
+.admin-form select {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  margin-bottom: 20px;
+  transition: border-color 0.2s ease;
+}
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: #000;
+}
+
+.admin-form select option {
+  font-size: 14px;
+}
+.admin-form .form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.admin-form .form-row > div {
+  flex: 1;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.admin-table th {
+  font-weight: 600;
+  font-size: 13px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+.admin-table tr:hover {
+  background: #fafafa;
+}
+
+.badge {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.badge-admin {
+  background: #000;
+  color: #fff;
+}
+
+.badge-user {
+  background: #eee;
+  color: #333;
+}

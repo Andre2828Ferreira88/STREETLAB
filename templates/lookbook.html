@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% block title %}Lookbook • STREETLAB{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lookbook.css') }}">
+
+<section class="lb">
+
+  <!-- HERO -->
+  <header class="lb-hero">
+    <div class="lb-hero__media">
+      <!-- Troque por uma foto sua -->
+      <img src="{{ url_for('static', filename='img/lookbook/hero.jpg') }}" alt="STREETLAB Lookbook">
+      <div class="lb-hero__overlay"></div>
+    </div>
+
+    <div class="lb-hero__content">
+      <div class="lb-kicker">STREETLAB LOOKBOOK</div>
+      <h1 class="lb-title">THE STREET IS OUR LAB</h1>
+      <p class="lb-subtitle">
+        Construído no concreto. Pensado no detalhe. Vestido no corre.
+      </p>
+
+      <div class="lb-hero__actions">
+        <a class="lb-btn lb-btn--primary" href="/shop">Ver coleção</a>
+        <a class="lb-btn lb-btn--ghost" href="#editorial">Ver looks</a>
+      </div>
+
+      <div class="lb-meta">
+        <span>Drop 01</span>
+        <span class="dot"></span>
+        <span>São Paulo</span>
+        <span class="dot"></span>
+        <span>Streetwear / Skate</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MANIFESTO -->
+  <section class="lb-section lb-manifesto">
+    <div class="lb-container lb-grid2">
+      <div>
+        <div class="lb-section__kicker">Manifesto</div>
+        <h2 class="lb-section__title">Não seguimos tendências. Criamos movimento.</h2>
+      </div>
+
+      <div class="lb-manifesto__text">
+        <p>
+          A STREETLAB nasce da rua. Do concreto, do skate, do corre diário.
+          Cada peça carrega identidade, atitude e liberdade.
+        </p>
+        <p>
+          Caimento pensado, tecidos selecionados e presença real.
+          A rua é laboratório. A roupa é linguagem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section id="editorial" class="lb-section lb-editorial">
+    <div class="lb-container">
+      <div class="lb-head">
+        <div>
+          <div class="lb-section__kicker">Editorial</div>
+          <h2 class="lb-section__title">Looks completos, estética limpa, atitude forte.</h2>
+        </div>
+        <div class="lb-head__right">
+          <span class="lb-pill">Minimal</span>
+          <span class="lb-pill">Urban</span>
+          <span class="lb-pill">Skate-ready</span>
+        </div>
+      </div>
+
+      <div class="lb-cards">
+        <!-- LOOK 01 -->
+        <article class="lb-card">
+          <div class="lb-card__img">
+            <img src="{{ url_for('static', filename='img/lookbook/look01.jpg') }}" alt="Look 01">
+          </div>
+          <div class="lb-card__body">
+            <div class="lb-card__top">
+              <span class="lb-tag">LOOK 01</span>
+              <span class="lb-muted">Drop 01</span>
+            </div>
+            <h3 class="lb-card__title">Dead Future Tee + Cargo Black</h3>
+            <p class="lb-card__text">
+              Presença forte com proporção equilibrada. Simples, direto e pronto para rua.
+            </p>
+          </div>
+        </article>
+
+        <!-- LOOK 02 -->
+        <article class="lb-card">
+          <div class="lb-card__img">
+            <img src="{{ url_for('static', filename='img/lookbook/look02.jpg') }}" alt="Look 02">
+          </div>
+          <div class="lb-card__body">
+            <div class="lb-card__top">
+              <span class="lb-tag">LOOK 02</span>
+              <span class="lb-muted">Essentials</span>
+            </div>
+            <h3 class="lb-card__title">Essential Tee + Denim Street</h3>
+            <p class="lb-card__text">
+              Caimento confortável, recorte limpo e estética urbana para qualquer ocasião.
+            </p>
+          </div>
+        </article>
+
+        <!-- LOOK 03 -->
+        <article class="lb-card">
+          <div class="lb-card__img">
+            <img src="{{ url_for('static', filename='img/lookbook/look03.jpg') }}" alt="Look 03">
+          </div>
+          <div class="lb-card__body">
+            <div class="lb-card__top">
+              <span class="lb-tag">LOOK 03</span>
+              <span class="lb-muted">Night</span>
+            </div>
+            <h3 class="lb-card__title">Hoodie Oversized + Cargo</h3>
+            <p class="lb-card__text">
+              Volume na medida, peso certo e acabamento premium para noite e frio.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="lb-section lb-details">
+    <div class="lb-container lb-grid2">
+      <div>
+        <div class="lb-section__kicker">Detalhes</div>
+        <h2 class="lb-section__title">DETAILS MATTER.</h2>
+        <p class="lb-lead">
+          O que separa “mais um produto” de uma peça de marca é o cuidado no acabamento.
+        </p>
+
+        <ul class="lb-list">
+          <li><span class="lb-bullet"></span> Impressão e bordado com alta durabilidade</li>
+          <li><span class="lb-bullet"></span> Modelagem pensada para mobilidade</li>
+          <li><span class="lb-bullet"></span> Tecidos com toque firme e confortável</li>
+        </ul>
+      </div>
+
+      <div class="lb-mosaic">
+        <figure class="lb-mosaic__item">
+          <img src="{{ url_for('static', filename='img/lookbook/detail01.jpg') }}" alt="Detalhe 01">
+        </figure>
+        <figure class="lb-mosaic__item">
+          <img src="{{ url_for('static', filename='img/lookbook/detail02.jpg') }}" alt="Detalhe 02">
+        </figure>
+        <figure class="lb-mosaic__item">
+          <img src="{{ url_for('static', filename='img/lookbook/detail03.jpg') }}" alt="Detalhe 03">
+        </figure>
+        <figure class="lb-mosaic__item">
+          <img src="{{ url_for('static', filename='img/lookbook/detail04.jpg') }}" alt="Detalhe 04">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE -->
+  <section class="lb-section lb-life">
+    <div class="lb-container">
+      <div class="lb-head">
+        <div>
+          <div class="lb-section__kicker">Lifestyle</div>
+          <h2 class="lb-section__title">Não é só roupa. É postura.</h2>
+        </div>
+        <a class="lb-link" href="/shop">Comprar agora →</a>
+      </div>
+
+      <div class="lb-life__grid">
+        <div class="lb-life__big">
+          <img src="{{ url_for('static', filename='img/lookbook/life01.jpg') }}" alt="Lifestyle 01">
+          <div class="lb-life__cap">
+            <strong>Built for the streets</strong>
+            <span>Concreto, movimento e liberdade.</span>
+          </div>
+        </div>
+
+        <div class="lb-life__small">
+          <img src="{{ url_for('static', filename='img/lookbook/life02.jpg') }}" alt="Lifestyle 02">
+        </div>
+        <div class="lb-life__small">
+          <img src="{{ url_for('static', filename='img/lookbook/life03.jpg') }}" alt="Lifestyle 03">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="lb-cta">
+    <div class="lb-container lb-cta__box">
+      <div>
+        <div class="lb-section__kicker">Coleção</div>
+        <h2 class="lb-cta__title">Explore a coleção e feche o look.</h2>
+        <p class="lb-cta__text">
+          Escolha peças que combinam com sua rotina e sua identidade.
+        </p>
+      </div>
+
+      <div class="lb-cta__actions">
+        <a class="lb-btn lb-btn--primary" href="/shop">Ir para Shop</a>
+        <a class="lb-btn lb-btn--ghost" href="/cart">Ver carrinho</a>
+      </div>
+    </div>
+  </section>
+
+</section>
+{% endblock %}

@@ -1,0 +1,8 @@
+Flask
+gunicorn
+Werkzeug
+Jinja2
+itsdangerous
+click
+psycopg2-binary
+flask-sqlalchemy

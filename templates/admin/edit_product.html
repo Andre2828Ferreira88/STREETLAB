@@ -1,0 +1,73 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Editar Produto • STREETLAB{% endblock %}
+
+{% block content %}
+<h1 class="admin-title">Editar Produto</h1>
+
+<form method="POST" enctype="multipart/form-data" class="admin-form">
+
+    <input name="name" value="{{ product.name }}" required>
+    <input name="price" value="{{ product.price }}" required>
+    <select name="category" required>
+    <option value="caps" {% if product.category == 'caps' %}selected{% endif %}>Boné</option>
+    <option value="tees" {% if product.category == 'tees' %}selected{% endif %}>Camiseta</option>
+    <option value="hoodies" {% if product.category == 'hoodies' %}selected{% endif %}>Moletom</option>
+    <option value="pants" {% if product.category == 'pants' %}selected{% endif %}>Calça</option>
+    </select>
+
+
+
+  <textarea name="description">{{ product.description }}</textarea>
+
+  <!-- IMAGEM -->
+  <div class="image-upload">
+    <label class="image-upload__label">Imagem atual</label>
+
+    <div
+      class="image-upload__preview"
+      id="imagePreview"
+      style="background-image:url('{{ url_for('static', filename='uploads/' ~ product.image) }}')">
+    </div>
+
+    <input
+      type="file"
+      name="image"
+      id="imageInput"
+      accept="image/*">
+  </div>
+
+  <label>Estoque por tamanho</label>
+
+<div class="stock-grid">
+  <input type="number" name="stock_p" placeholder="P" min="0">
+  <input type="number" name="stock_m" placeholder="M" min="0">
+  <input type="number" name="stock_g" placeholder="G" min="0">
+</div>
+
+
+  <label class="checkbox">
+    <input type="checkbox" name="active" {% if product.active %}checked{% endif %}>
+    Produto ativo
+  </label>
+
+  <button class="btn-admin">Atualizar</button>
+</form>
+
+<script>
+  const input = document.getElementById("imageInput");
+  const preview = document.getElementById("imagePreview");
+
+  if (input && preview) {
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        preview.style.backgroundImage = `url(${reader.result})`;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+</script>
+{% endblock %}

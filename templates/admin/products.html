@@ -1,0 +1,43 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Produtos • STREETLAB{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+  <h1 class="admin-title">Produtos</h1>
+  <a href="/admin/products/new" class="btn-admin">Novo Produto</a>
+</div>
+
+<table class="admin-table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Preço</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in products %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ p.category }}</td>
+      <td>R$ {{ p.price }}</td>
+      <td>
+        {% if p.active %}
+          Ativo
+        {% else %}
+          Inativo
+        {% endif %}
+      </td>
+
+      
+      <td class="admin-actions">
+        <a href="/admin/products/edit/{{ p.id }}">Editar</a>
+        <a href="/admin/products/delete/{{ p.id }}" class="danger">Excluir</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

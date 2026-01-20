@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Pedido #{{ order.id }} • STREETLAB{% endblock %}
+
+{% block content %}
+<section class="success">
+  <div class="success__wrap">
+
+    <h1 class="success__title">Pedido criado</h1>
+    <p class="muted">Pedido #{{ order.id }} • Status: {{ order.status }}</p>
+
+    <div class="success__grid">
+
+      <div class="success__card">
+        <h3>Entrega</h3>
+        <p>
+          {{ order.address_line }}<br>
+          {{ order.address_city }} - {{ order.address_state }}<br>
+          CEP: {{ order.address_zip }}
+        </p>
+
+        <h3>Itens</h3>
+        {% for it in items %}
+          <div class="row">
+            <span>{{ it.name }} ({{ it.size }}) x{{ it.quantity }}</span>
+            <strong>R$ {{ "%.2f"|format(it.unit_price * it.quantity) }}</strong>
+          </div>
+        {% endfor %}
+
+        <div class="line"></div>
+
+        <div class="row">
+          <span>Subtotal</span>
+          <strong>R$ {{ "%.2f"|format(order.subtotal) }}</strong>
+        </div>
+        <div class="row">
+          <span>Frete</span>
+          <strong>R$ {{ "%.2f"|format(order.shipping) }}</strong>
+        </div>
+        <div class="row total">
+          <span>Total</span>
+          <strong>R$ {{ "%.2f"|format(order.total) }}</strong>
+        </div>
+      </div>
+
+      <div class="success__card">
+        <h3>Pagamento ({{ order.payment_method | upper }})</h3>
+
+        {% if order.payment_method == "pix" %}
+          <p class="muted">Copie e cole o código Pix abaixo (simulado):</p>
+          <textarea class="pixbox" readonly>00020126580014BR.GOV.BCB.PIX0136streetlab@pix.com5204000053039865405{{ "%.2f"|format(order.total) }}5802BR5920STREETLAB STORE6009SAO PAULO62130509ORDER{{ order.id }}6304ABCD</textarea>
+          <p class="muted">Após o pagamento, o status mudaria para “paid” numa integração real.</p>
+
+        {% elif order.payment_method == "boleto" %}
+          <p class="muted">Boleto gerado (simulado):</p>
+          <div class="boleto">
+            <div><strong>Linha digitável:</strong></div>
+            <div class="code">34191.79001 01043.510047 91020.150008 8 123400000{{ "%.0f"|format(order.total*100) }}</div>
+          </div>
+
+        {% else %}
+          <p class="muted">Cartão (simulado). Em produção, integrar com gateway:</p>
+          <ul class="muted">
+            <li>Mercado Pago</li>
+            <li>Stripe</li>
+            <li>Pagar.me</li>
+          </ul>
+        {% endif %}
+
+        <a href="/shop" class="btn btn--ghost btn--full" style="margin-top:12px;">
+          Voltar para a loja
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

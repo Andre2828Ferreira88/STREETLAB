@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}Checkout • STREETLAB{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+
+{% set show_payment = show_payment | default(false) %}
+{% if shipping > 0 %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("paymentSection").style.display = "block";
+    document.getElementById("finishBtn").style.display = "block";
+  });
+</script>
+{% endif %}
+
+
+
+<section class="checkout">
+  <div class="checkout__wrap">
+
+    <h1 class="checkout__title">Finalizar compra</h1>
+
+    <div class="checkout__grid">
+
+      <!-- FORM -->
+        <form method="POST" class="checkout__form card">
+
+        <div class="field">
+          <label>Nome</label>
+          <input name="customer_name" type="text" required>
+        </div>
+
+        <div class="field">
+          <label>E-mail</label>
+          <input name="customer_email" type="email" required>
+        </div>
+
+        <div class="field">
+          <label>Endereço</label>
+          <input name="address_line" type="text" placeholder="Rua, número, bairro" required>
+        </div>
+
+        <div class="fieldRow">
+          <div class="field">
+            <label>Cidade</label>
+            <input name="address_city" type="text" required>
+          </div>
+          <div class="field">
+            <label>Estado</label>
+            <input name="address_state" type="text" maxlength="2" placeholder="SP" required>
+          </div>
+          <div class="field">
+            <label>CEP</label>
+            <input name="address_zip" type="text" required>
+          </div>
+        </div>
+
+        <!-- PAGAMENTO (começa escondido) -->
+        <div class="pay" id="paymentSection" style="display:none;">
+          <div class="pay__title">Pagamento</div>
+
+          <label class="pay__opt">
+            <input type="radio" name="payment_method" value="pix">
+            <span>Pix</span>
+          </label>
+
+          <label class="pay__opt">
+            <input type="radio" name="payment_method" value="card">
+            <span>Cartão</span>
+          </label>
+
+          <label class="pay__opt">
+            <input type="radio" name="payment_method" value="boleto">
+            <span>Boleto</span>
+          </label>
+        </div>
+
+
+      <button type="submit" name="action" value="calc_shipping"
+              class="btn btn--primary btn--full">
+        Calcular frete
+      </button>
+
+      <button type="submit" name="action" value="finish_order"
+              class="btn btn--primary btn--full"
+              id="finishBtn" style="display:none;">
+        Finalizar pedido
+      </button>
+
+
+
+      </form>
+
+      <!-- RESUMO -->
+      <div class="summaryRow">
+        <span>Subtotal</span>
+        <strong>R$ {{ "%.2f"|format(subtotal) }}</strong>
+      </div>
+
+      {% if shipping > 0 %}
+        <div class="summaryRow">
+          <span>Frete</span>
+          <strong>R$ {{ "%.2f"|format(shipping) }}</strong>
+        </div>
+
+        <div class="summaryLine"></div>
+
+        <div class="summaryRow total">
+          <span>Total</span>
+          <strong>R$ {{ "%.2f"|format(total) }}</strong>
+        </div>
+
+      {% endif %}
+
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

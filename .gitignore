@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+
+# Banco de dados
+*.db
+database/*.db
+
+# Uploads de usuários
+static/uploads/
+
+# Logs
+*.log
+
+# SO / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

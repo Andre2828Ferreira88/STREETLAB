@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Criar conta • STREETLAB{% endblock %}
+
+{% block content %}
+<section class="auth">
+  <div class="auth__wrap">
+    
+    <div class="auth__header">
+      <h1 class="auth__title">CRIAR CONTA</h1>
+      <p class="auth__subtitle">
+        Crie sua conta para comprar e acompanhar pedidos.
+      </p>
+    </div>
+
+    <form method="POST" class="auth__form">
+      <input type="text" name="name" placeholder="Nome" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Senha" required>
+
+      <button class="btn btn--primary btn--full">
+        Criar conta
+      </button>
+    </form>
+
+    <div class="auth__footer">
+      <span>Já tem conta?</span>
+      <a href="/login">Entrar</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

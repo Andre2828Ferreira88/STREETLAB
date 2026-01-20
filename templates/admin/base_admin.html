@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Admin • STREETLAB{% endblock %}</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+
+<header class="admin-top">
+  <div class="admin-brand">STREETLAB</div>
+  <div class="admin-user">
+    Admin
+    <a href="/" class="admin-exit">Ver site</a>
+  </div>
+</header>
+
+<div class="admin-layout">
+  <aside class="admin-menu">
+    <a href="/admin" class="admin-link">Dashboard</a>
+    <a href="/admin/products" class="admin-link">Produtos</a>
+    <a href="/logout" class="admin-link admin-link--danger">Sair</a>
+    <a href="/admin/users" class="admin-link">
+  <h3>Usuários</h3>
+  <p>Ver cadastros</p>
+</a>
+  </aside>
+
+  <main class="admin-content">
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+</body>
+</html>

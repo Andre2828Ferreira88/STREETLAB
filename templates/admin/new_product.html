@@ -1,0 +1,76 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Novo Produto • STREETLAB{% endblock %}
+
+{% block content %}
+<h1 class="admin-title">Novo Produto</h1>
+
+<form method="POST" enctype="multipart/form-data" class="admin-form">
+    <input name="name" placeholder="Nome" required>
+    <input name="slug" placeholder="Slug (ex: hoodie-void)" required>
+    <input name="price" placeholder="Preço" required>
+    <select name="category" required>
+    <option value="">Selecione</option>
+    <option value="caps">Boné</option>
+    <option value="tees">Camiseta</option>
+    <option value="hoodies">Moletom</option>
+    <option value="pants">Calça</option>
+    </select>
+
+
+
+  <textarea name="description" placeholder="Descrição"></textarea>
+
+  <div class="image-upload">
+    <label class="image-upload__label">Imagem do produto</label>
+
+    <div class="image-upload__preview" id="imagePreview">
+      <span>Preview</span>
+    </div>
+
+    <input
+      type="file"
+      name="image"
+      id="imageInput"
+      accept="image/*"
+      required
+    >
+  </div>
+
+  <label>Estoque por tamanho</label>
+
+<label>Estoque por tamanho</label>
+
+<div class="stock-grid">
+  <input type="number" name="stock_p" placeholder="P" min="0" value="0">
+  <input type="number" name="stock_m" placeholder="M" min="0" value="0">
+  <input type="number" name="stock_g" placeholder="G" min="0" value="0">
+</div>
+
+
+
+  <label class="checkbox">
+    <input type="checkbox" name="active" checked> Produto ativo
+  </label>
+
+  <button class="btn-admin">Salvar</button>
+</form>
+
+<script>
+  const input = document.getElementById("imageInput");
+  const preview = document.getElementById("imagePreview");
+
+  if (input && preview) {
+    input.addEventListener("change", () => {
+      const file = input.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        preview.style.backgroundImage = `url(${reader.result})`;
+        preview.innerHTML = "";
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+</script>
+{% endblock %}

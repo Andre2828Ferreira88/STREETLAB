@@ -1,0 +1,21 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Dashboard • STREETLAB{% endblock %}
+
+{% block content %}
+<h1 class="admin-title">Dashboard</h1>
+
+<div class="admin-cards">
+  <div class="admin-card">
+    <span>Total de produtos</span>
+    <strong>{{ total }}</strong>
+  </div>
+
+  <div class="admin-card">
+    <span>Produtos ativos</span>
+    <strong>{{ active }}</strong>
+  </div>
+</div>
+
+
+
+{% endblock %}
