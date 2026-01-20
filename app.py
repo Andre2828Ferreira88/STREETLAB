@@ -960,6 +960,26 @@ def cart_remove(index):
         session.modified = True
 
     return redirect("/cart")
+@app.route("/_promote-admin")
+def promote_admin():
+    email = request.args.get("email")
+
+    if not email:
+        return "Informe o email", 400
+
+    db = get_db()
+    cur = db.execute(
+        "UPDATE users SET role = 'admin' WHERE email = ?",
+        (email.strip().lower(),)
+    )
+    db.commit()
+    rows = cur.rowcount
+    db.close()
+
+    if rows == 0:
+        return "Usuário não encontrado", 404
+
+    return "Usuário promovido a admin com sucesso"
 
 # =====================
 # RUN
